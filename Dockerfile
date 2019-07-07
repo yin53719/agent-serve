@@ -1,22 +1,13 @@
-FROM registry.cn-hangzhou.aliyuncs.com/aliyun-node/alinode:latest
-
-
-# copy代码进docker，替换config文件
-RUN mkdir /usr/local/eas
-COPY ./ /usr/local/eas
-
-# 安装service的npm依赖
-RUN cd /usr/local/eas \
-	&& npm install --registry=https://registry.npm.taobao.org \
-
-# 进入工作目录
-WORKDIR /usr/local/eas
-
-# 配置环境
-#ENV NODE_ENV=test
-
-# docker对外暴露的端口号
+#制定node镜像的版本
+FROM node:10.16.0
+#声明作者
+MAINTAINER hardy-yin
+#移动当前目录下面的文件到app目录下
+ADD . /app/
+#进入到app目录下面，类似cd
+WORKDIR /app
+#安装依赖
+#对外暴露的端口
 EXPOSE 7001
-
-# 执行脚本
-CMD npm run start
+#程序启动脚本
+CMD ["npm",'run' ,"start"]
