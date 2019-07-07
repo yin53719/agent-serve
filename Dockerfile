@@ -10,4 +10,4 @@ WORKDIR /app
 #对外暴露的端口
 EXPOSE 7001
 #程序启动脚本
-CMD ["npm", "start"]
+CMD ["npm",'run' ,"start"]
