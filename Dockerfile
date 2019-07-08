@@ -7,7 +7,7 @@ ADD . /app/
 #进入到app目录下面，类似cd
 WORKDIR /app
 #安装依赖
+RUN npm install && npm start
 #对外暴露的端口
-EXPOSE 7001
 #程序启动脚本
-CMD ["npm",'run' ,"start"]
+EXPOSE 7001
